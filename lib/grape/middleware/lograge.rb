@@ -64,6 +64,7 @@ class Grape::Middleware::Lograge < Grape::Middleware::Globals
 
   def after(payload, status)
     payload[:status]     = status
+    payload[:client]     = env['REMOTE_ADDR']
     payload[:format]     = env['api.format']
     payload[:version]    = env['api.version']
     payload[:db_runtime] = @db_duration
